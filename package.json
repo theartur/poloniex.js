@@ -1,6 +1,6 @@
 {
   "name": "poloniex.jazzcript.js",
-  "version": "0.0.7",
+  "version": "0.0.1",
   "description": "Poloniex API client",
   "author": "jazzcript",
   "license": "MIT",
