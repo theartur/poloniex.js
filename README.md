@@ -25,12 +25,6 @@ MIT, open source. See LICENSE file.
     cd poloniex
     npm install
 
-
-## Or download the latest zip
-
-* [zip download][repo-zip]
-
-
 ## Require as a module
 
 In your app, require the module:
