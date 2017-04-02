@@ -113,12 +113,12 @@ Example response:
     {"BTC_LTC":{"BTC":"2.23248854","LTC":"87.10381314"},"BTC_NXT":{"BTC":"0.981616","NXT":"14145"}, ... "totalBTC":"81.89657704","totalLTC":"78.52083806"}
 
 
-### returnOrderBook(currencyA, currencyB, callback)
+### returnOrderBook(currencyPair, callback)
 
 Returns the order book for a given market.  
 Calls API method `returnOrderBook`.
 
-    poloniex.returnOrderBook('VTC', 'BTC', function(err, data) {
+    poloniex.returnOrderBook('VTC_BTC', function(err, data) {
         if (err){
             // handle error
         }
@@ -132,7 +132,7 @@ Example response:
     {"asks":[[0.00007600,1164],[0.00007620,1300], ... "bids":[[0.00006901,200],[0.00006900,408], ... }
 
 
-### returnChartData(currencyA, currencyB, period, start, end, callback)
+### returnChartData(currencyPair, period, start, end, callback)
 
 Returns candlestick chart data. Candlestick "period" is one of 300, 900, 1800, 7200, 14400, or 86400 seconds. "Start" and "end" are given in UNIX timestamp format and used to specify the date range for the data returned.
 
@@ -215,11 +215,11 @@ Example response:
         "withdrawals":[{"withdrawalNumber":134933,"currency":"BTC","address":"1N2i5n8DwTGzUq2Vmn9TUL8J1vdr1XBDFg","amount":"5.00010000", 
         "timestamp":1399267904,"status":"COMPLETE: 36e483efa6aff9fd53a235177579d98451c4eb237c210e66cd2b9a2d4a988f8e","ipAddress":"..."}]}
 
-### returnOpenOrders(currencyA, currencyB, callback)
+### returnOpenOrders(currencyPair, callback)
 
 Returns your open orders for a given market, specified by the two given currencies.
 
-    poloniex.myOpenOrders('VTC', 'BTC', function(err, data){
+    poloniex.myOpenOrders('VTC_BTC', function(err, data){
         if (err){
             // handle error
         }
@@ -231,12 +231,12 @@ Example response:
 
     [{"orderNumber":"120466","type":"sell","rate":"0.025","amount":"100","total":"2.5"},{"orderNumber":"120467","type":"sell","rate":"0.04","amount":"100","total":"4"}, ... ]
 
-### returnTradeHistory(currencyA, currencyB, callback)
+### returnTradeHistory(currencyPair, callback)
 
 Returns the past 200 trades in a given market.
 Calls API method `returnTradeHistory`.
 
-    poloniex.returnTradeHistory('VTC', 'BTC', function(err, data) {
+    poloniex.returnTradeHistory('VTC_BTC', function(err, data) {
         if (err) {
             // handle error
         }
@@ -256,7 +256,7 @@ Example response:
 
     [{"globalTradeID": 20825863, "tradeID": 147142, "currencyPair": "BTC_XVC", "type": "buy", "rate": "0.00018500", "amount": "455.34206390", "total": "0.08423828", "fee": "0.00200000", "date": "2016-03-14 01:04:36"}, ...]
 
-### buy(currencyA, currencyB, rate, amount, callback)
+### buy(currencyPair, rate, amount, callback)
 
 Places a limit buy order in a given market.
 
@@ -264,11 +264,11 @@ Example response:
 
     {"orderNumber":31226040,"resultingTrades":[{"amount":"338.8732","date":"2014-10-18 23:03:21","rate":"0.00000173","total":"0.00058625","tradeID":"16164","type":"buy"}]}
 
-### sell(currencyA, currencyB, rate, amount, callback)
+### sell(currencyPair, rate, amount, callback)
 
 Places a limit sell order in a given market.
 
-    poloniex.sell('VTC', 'BTC', 0.1, 100, function(err, data) {
+    poloniex.sell('VTC_BTC', 0.1, 100, function(err, data) {
         if (err){
             // handle error
         }
@@ -280,11 +280,11 @@ Example response:
 
     {"orderNumber":31226040,"resultingTrades":[{"amount":"338.8732","date":"2014-10-18 23:03:21","rate":"0.00000173","total":"0.00058625","tradeID":"16167","type":"sell"}]}
 
-### cancelOrder(currencyA, currencyB, orderNumber, callback)
+### cancelOrder(currencyPair, orderNumber, callback)
 
 Cancels an order you have placed in a given market.
 
-    poloniex.cancelOrder('VTC', 'BTC', 170675, function(err, data) {
+    poloniex.cancelOrder('VTC_BTC', 170675, function(err, data) {
         if (err){
             // handle error
         }
@@ -360,11 +360,11 @@ Example response:
 
     {"totalValue": "0.00346561","pl": "-0.00001220","lendingFees": "0.00000000","netValue": "0.00345341","totalBorrowedValue": "0.00123220","currentMargin": "2.80263755"}
 
-### marginBuy(currencyA, currencyB, rate, amount, lendingRate, callback)
+### marginBuy(currencyPair, rate, amount, lendingRate, callback)
 
 Places a margin buy order in a given market. You may optionally specify a maximum lending rate using the "lendingRate" parameter. If successful, the method will return the order number and any trades immediately resulting from your order.
 
-    poloniex.buy('VTC', 'BTC', 0.1, 100, function(err, data) {
+    poloniex.buy('VTC_BTC', 0.1, 100, function(err, data) {
         if (err){
             // handle error
         }
@@ -376,7 +376,7 @@ Example response:
 
     {"success":1,"message":"Margin order placed.","orderNumber":"154407998","resultingTrades":{"BTC_DASH":[{"amount":"1.00000000","date":"2015-05-10 22:47:05","rate":"0.01383692","total":"0.01383692","tradeID":"1213556","type":"buy"}]}}
 
-### marginSell(currencyA, currencyB, rate, amount, lendingRate, callback)
+### marginSell(currencyPair, rate, amount, lendingRate, callback)
 
 Places a margin sell order in a given market. You may optionally specify a maximum lending rate using the "lendingRate" parameter. If successful, the method will return the order number and any trades immediately resulting from your order.
 
@@ -384,7 +384,7 @@ Example response:
 
     {"success":1,"message":"Margin order placed.","orderNumber":"154407998","resultingTrades":{"BTC_DASH":[{"amount":"1.00000000","date":"2015-05-10 22:47:05","rate":"0.01383692","total":"0.01383692","tradeID":"1213556","type":"sell"}]}}
 
-### getMarginPosition(currencyA, currencyB, callback)
+### getMarginPosition(currencyPair, callback)
 
 Returns information about the margin position in a given market. If you have no margin position in the specified market, "type" will be set to "none". "liquidationPrice" is an estimate, and does not necessarily represent the price at which an actual forced liquidation will occur. If you have no liquidation price, the value will be -1.
 
@@ -392,7 +392,7 @@ Example response:
 
     {"amount":"40.94717831","total":"-0.09671314",""basePrice":"0.00236190","liquidationPrice":-1,"pl":"-0.00058655", "lendingFees":"-0.00000038","type":"long"}
 
-### closeMarginPosition(currencyA, currencyB, callback)
+### closeMarginPosition(currencyPair, callback)
 
 Closes a margin position in a given market using a market order. This call will also return success if you do not have an open position in the specified market.
 
