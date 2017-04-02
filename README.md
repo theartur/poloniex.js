@@ -1,4 +1,4 @@
-# poloniex.js
+# poloniex.jazzcript.js
 
 USE AT YOUR OWN RISK Node.js API client for the [Poloniex][poloniex] cryptocurrency exchange.
 
