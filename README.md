@@ -1,12 +1,12 @@
 # poloniex.js
 
-An (unofficial) Node.js API client for the [Poloniex][poloniex] cryptocurrency exchange.
+USE AT YOUR OWN RISK Node.js API client for the [Poloniex][poloniex] cryptocurrency exchange.
 
 The client supports both public (unauthenticated) and private (authenticated) calls to the [Poloniex API][poloniex-api].
 
 For private calls, the user secret is never exposed to other parts of the program or over the Web. The user key is sent as a header to the API, along with a signed request.
 
-Repo home: [github.com/premasagar/poloniex.js][repo]
+Repo home: [github.com/theartur/poloniex.js][repo]
 
 
 ## License
@@ -16,12 +16,12 @@ MIT, open source. See LICENSE file.
 
 ## Install via NPM
 
-    npm install poloniex.js
+    npm install https://github.com/theartur/poloniex.js.git
 
 
 ## Or clone from GitHub
 
-    git clone https://github.com/premasagar/poloniex.js.git
+    git clone https://github.com/theartur/poloniex.js.git
     cd poloniex
     npm install
 
