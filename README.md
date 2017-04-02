@@ -29,7 +29,7 @@ MIT, open source. See LICENSE file.
 
 In your app, require the module:
 
-    var Poloniex = require('poloniex.js');
+    var Poloniex = require('poloniex.jazzcript.js');
 
 If not installed via NPM, then provide the path to lib/poloniex.js
 
